@@ -1,0 +1,92 @@
+{
+  "post": {
+    "summary": "Crear personaje",
+    "description": "Permite crear una personaje",
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/CharacterInput"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Permite crear una personaje",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Personaje creado"
+                },
+                "data": {
+                  "$ref": "#/components/schemas/CharacterResponseInput"
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Datos inválidos",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Datos inválidos"
+                },
+                "details": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "property": {
+                        "type": "string",
+                        "example": "planetName"
+                      },
+                      "constraints": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        },
+                        "example": {
+                          "isString": "planetName must be a string",
+                          "isNotEmpty": "planetName should not be empty"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "500": {
+        "description": "Error interno del servidor",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Error interno al guardar personaje"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

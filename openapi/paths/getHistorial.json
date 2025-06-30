@@ -1,0 +1,71 @@
+{
+  "get": {
+    "summary": "Obtener historial de fusiones",
+    "description": "Retorna el historial de todas las respuestas almacenadas por el endpoint `/fusionados`, ordenado cronológicamente y paginado.",
+    "parameters": [
+      {
+        "name": "limit",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 10
+        },
+        "description": "Cantidad máxima de registros a devolver"
+      },
+      {
+        "name": "lastKey",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "description": "ID del último elemento recibido en la página anterior (para paginación)"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Historial paginado correctamente",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "historial paginados"
+                },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CharacterWeatherInput"
+                  }
+                },
+                "lastKey": {
+                  "type": ["string", "null"],
+                  "example": "5"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Error al consultar historial",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Error interno al consultar historial"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

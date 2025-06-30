@@ -1,0 +1,97 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Reto Softtek - API Lambda",
+    "version": "1.0.0",
+    "description": "Documentación de la API AWS Lambda, DynamoDB."
+  },
+  "paths": {
+    "/store-character": {
+      "$ref": "./paths/postCharacter.json"
+    },
+    "/fusionados": {
+      "$ref": "./paths/getFusionados.json"
+    },
+    "/historial": {
+      "$ref": "./paths/getHistorial.json"
+    }
+  },
+  "components": {
+    "schemas": {
+      "CharacterInput": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Anakin Skywalker"
+          },
+          "planetName": {
+            "type": "string",
+            "example": "Tatooine"
+          },
+          "homeworldUrl": {
+            "type": "string",
+            "example": "https://swapi.dev/api/planets/1/"
+          }
+        },
+        "required": ["name", "planetName", "homeworldUrl"]
+      },
+      "CharacterResponseInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "0ffafc34-c915-4ad4-8027-2af4747de6e1"
+          },
+          "name": {
+            "type": "string",
+            "example": "Anakin Skywalker"
+          },
+          "planetName": {
+            "type": "string",
+            "example": "Tatooine"
+          },
+          "homeworldUrl": {
+            "type": "string",
+            "example": "https://swapi.dev/api/planets/1/"
+          }
+        },
+        "required": ["name", "planetName", "homeworldUrl"]
+      },
+      "CharacterWeatherInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "9"
+          },
+          "characterName": {
+            "type": "string",
+            "example": "Biggs Darklighter"
+          },
+          "planet": {
+            "type": "string",
+            "example": "Tatooine"
+          },
+          "temperature": {
+            "type": ["string", "null"],
+            "example": null
+          },
+          "weatherDescription": {
+            "type": "string",
+            "example": "Planeta no encontrado"
+          },
+          "humidity": {
+            "type": ["string", "null"],
+            "example": null
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-06-30T10:32:09.384Z"
+          }
+        }
+      }
+    }
+  }
+}
