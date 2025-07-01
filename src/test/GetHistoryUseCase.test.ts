@@ -4,6 +4,7 @@ import { GetHistoryUseCase } from "@/application/use-cases/GetHistoryUseCase";
 
 describe("GetHistoryUseCase", () => {
   const useCase = new GetHistoryUseCase(mockRepository);
+  
 
   beforeEach(() => {
     jest.clearAllMocks();
